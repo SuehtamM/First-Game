@@ -8,6 +8,11 @@ var left_camera_limit = - 1085
 var bottom_camera_limit = 65
 var right_camera_limit = 4000
 
+func _ready() -> void:
+	$Player/Camera2D.limit_left = left_camera_limit
+	$Player/Camera2D.limit_bottom = bottom_camera_limit
+	$Player/Camera2D.limit_right = right_camera_limit
+
 func _process(delta: float) -> void:
 	if enemies_dead == 7 and not bonus_area_available:
 		bonus_area_available = true

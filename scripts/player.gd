@@ -98,6 +98,7 @@ func _physics_process(delta: float) -> void:
 func _on_hurt_box_area_entered(area: Area2D) -> void:
 	if not damaged:
 		health -= 1
+		$DamageReceived.play()
 		$Timer_damage.start()
 		damaged = true
 
@@ -111,3 +112,8 @@ func _on_hit_box_area_entered(area: Area2D) -> void:
 
 func _on_killzone_game_state_off() -> void:
 	game_over = true
+
+func _on_double_jump_item_body_entered(body: Node2D) -> void:
+	maxjumps = 1
+	$PowerUpReceived.play()
+	%DoubleJumpItem.queue_free()

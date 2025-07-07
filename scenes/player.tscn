@@ -1,8 +1,10 @@
-[gd_scene load_steps=38 format=3 uid="uid://b0k1vfubmy5a8"]
+[gd_scene load_steps=40 format=3 uid="uid://b0k1vfubmy5a8"]
 
 [ext_resource type="Texture2D" uid="uid://kussay27g3pe" path="res://assets/sprites/knight.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://dfsga3sasybpj" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="PackedScene" uid="uid://dagr668s1vlhg" path="res://scenes/game_over.tscn" id="3_qhqgy"]
+[ext_resource type="AudioStream" uid="uid://bfen2hpn308qh" path="res://assets/sounds/hurt.wav" id="4_dqkch"]
+[ext_resource type="AudioStream" uid="uid://c66jwo7myphdh" path="res://assets/sounds/power_up.wav" id="5_qlg0r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pf23h"]
 atlas = ExtResource("1_3vyb7")
@@ -293,6 +295,16 @@ wait_time = 0.8
 
 [node name="GameOver" parent="." instance=ExtResource("3_qhqgy")]
 visible = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.605, 2.605)
+position_smoothing_enabled = true
+
+[node name="DamageReceived" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_dqkch")
+
+[node name="PowerUpReceived" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_qlg0r")
 
 [connection signal="timeout" from="Timer_dash" to="." method="_on_timer_dash_timeout"]
 [connection signal="timeout" from="Timer_can_dash" to="." method="_on_timer_can_dash_timeout"]

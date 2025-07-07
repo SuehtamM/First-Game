@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bkujqq2dynj4y"]
+
+[node name="Snow" type="Node2D"]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 1200
+lifetime = 6.53
+speed_scale = 0.35
+emission_shape = 3
+emission_rect_extents = Vector2(0, 300)
+spread = 180.0
+gravity = Vector2(-335.255, 100)
+initial_velocity_min = 93.02
+initial_velocity_max = 186.05
+scale_amount_min = 0.0
+scale_amount_max = 2.35

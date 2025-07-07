@@ -127,9 +127,8 @@ debug_color = Color(3.1285e-06, 0.646274, 0.240983, 0.42)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_g40cl")
-animation = &"walk"
+animation = &"damage"
 autoplay = "walk"
-frame = 2
 
 [node name="RayCastLeft" type="RayCast2D" parent="."]
 position = Vector2(0, -6)

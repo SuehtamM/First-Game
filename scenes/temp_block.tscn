@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://gt4gdr8hy487"]
+
+[ext_resource type="Script" uid="uid://bs3lpshxxg8aj" path="res://scripts/temp_block.gd" id="1_buajk"]
+[ext_resource type="Texture2D" uid="uid://bqaqrwynfs07q" path="res://assets/sprites/world_tileset.png" id="2_dtamu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_buajk"]
+size = Vector2(16, 16)
+
+[node name="TempBlock" type="StaticBody2D"]
+script = ExtResource("1_buajk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_dtamu")
+region_enabled = true
+region_rect = Rect2(48, 16, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_buajk")

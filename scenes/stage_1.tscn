@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://cbw4rojtghdhd"]
+[gd_scene load_steps=25 format=4 uid="uid://cbw4rojtghdhd"]
 
 [ext_resource type="Script" uid="uid://dgiffha3bsfrx" path="res://scripts/fase_1.gd" id="1_pipme"]
 [ext_resource type="PackedScene" uid="uid://cl5ey4ciasjml" path="res://scenes/slime.tscn" id="1_u47qm"]
@@ -11,6 +11,8 @@
 [ext_resource type="FontFile" uid="uid://hy43mg2mubsg" path="res://assets/fonts/PixelOperator8.ttf" id="7_k3p0l"]
 [ext_resource type="Script" uid="uid://cs1qf04cuq5my" path="res://scripts/textos.gd" id="8_pu7io"]
 [ext_resource type="PackedScene" uid="uid://cbqi00kn2ct36" path="res://scenes/block.tscn" id="9_ilkkl"]
+[ext_resource type="AudioStream" uid="uid://cxcqduq8g1yap" path="res://assets/music/time_for_adventure.mp3" id="12_k3p0l"]
+[ext_resource type="PackedScene" uid="uid://b0k1vfubmy5a8" path="res://scenes/player.tscn" id="13_ilkkl"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ilkkl"]
 
@@ -310,6 +312,21 @@ texture = ExtResource("2_e77qm")
 [sub_resource type="TileSet" id="TileSet_pipme"]
 sources/0 = SubResource("TileSetAtlasSource_bnu0w")
 
+[sub_resource type="Animation" id="Animation_pu7io"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1904, -107)]
+}
+
 [sub_resource type="Animation" id="Animation_rxqpy"]
 resource_name = "move"
 length = 6.0
@@ -327,7 +344,13 @@ tracks/0/keys = {
 "values": [Vector2(1904, -107), Vector2(2048, -171)]
 }
 
-[sub_resource type="Animation" id="Animation_pu7io"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k3p0l"]
+_data = {
+&"RESET": SubResource("Animation_pu7io"),
+&"move": SubResource("Animation_rxqpy")
+}
+
+[sub_resource type="Animation" id="Animation_kiwqh"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -339,13 +362,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1904, -107)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_k3p0l"]
-_data = {
-&"RESET": SubResource("Animation_pu7io"),
-&"move": SubResource("Animation_rxqpy")
+"values": [Vector2(672, -11)]
 }
 
 [sub_resource type="Animation" id="Animation_ilkkl"]
@@ -363,21 +380,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(672, 0), Vector2(672, -460)]
-}
-
-[sub_resource type="Animation" id="Animation_kiwqh"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(672, -11)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s6chy"]
@@ -609,6 +611,13 @@ position = Vector2(3514, -224)
 
 [node name="Block" parent="." instance=ExtResource("9_ilkkl")]
 position = Vector2(1120, -56)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_k3p0l")
+autoplay = true
+
+[node name="Player" parent="." instance=ExtResource("13_ilkkl")]
+position = Vector2(-1024, -72)
 
 [connection signal="slime_dead" from="Enemies/Slime" to="." method="_on_slime_slime_dead"]
 [connection signal="slime_dead" from="Enemies/Slime2" to="." method="_on_slime_2_slime_dead"]
