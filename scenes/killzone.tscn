@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dagr668s1vlhg" path="res://scenes/game_over.tscn" id="2_kl8fp"]
 
 [node name="killzone" type="Area2D"]
+collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_xlapc")
 

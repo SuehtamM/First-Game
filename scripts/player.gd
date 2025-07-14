@@ -13,6 +13,8 @@ var dashing : bool = false
 var dashes : int = 0
 var damaged : bool = false
 var game_over : bool = false
+var end_stage : bool = false
+var in_cutscene : bool = false
 
 func _on_timer_dash_timeout() -> void:
 	dashing = false
@@ -22,7 +24,7 @@ func _on_timer_can_dash_timeout() -> void:
 
 func _physics_process(delta: float) -> void:
 	# direction vale 1 para movimento pra direita e -1 pra esquerda (por causa da ordem)
-	if game_over:
+	if game_over or end_stage:
 		return
 	
 	if health <= 0:
@@ -116,4 +118,11 @@ func _on_killzone_game_state_off() -> void:
 func _on_double_jump_item_body_entered(body: Node2D) -> void:
 	maxjumps = 1
 	$PowerUpReceived.play()
+	%DoubleJumpItem/Explosion.emitting = true
+	await get_tree().create_timer(0.3).timeout
 	%DoubleJumpItem.queue_free()
+
+
+func _on_end_stage_body_entered(body: Node2D) -> void:
+	end_stage = true
+	position.x += 20

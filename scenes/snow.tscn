@@ -4,7 +4,7 @@
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 amount = 1200
-lifetime = 6.53
+lifetime = 2.03
 speed_scale = 0.35
 emission_shape = 3
 emission_rect_extents = Vector2(0, 300)

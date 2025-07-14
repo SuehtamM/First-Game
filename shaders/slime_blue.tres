@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dx5a3fvgtoekq"]
+
+[ext_resource type="Shader" uid="uid://bq1nxv64tx073" path="res://shaders/slime_blue.gdshader" id="1_uxort"]
+
+[resource]
+shader = ExtResource("1_uxort")

@@ -11,6 +11,6 @@ func _ready() -> void:
 	$Player/Camera2D.limit_right = right_camera_limit
 
 func _on_action_block_action() -> void:
-	$AltPathActivated.play()
+	$ActionBlock/AltPathActivated.play()
 	for block in $TempBlocks.get_children():
 		block.queue_free()

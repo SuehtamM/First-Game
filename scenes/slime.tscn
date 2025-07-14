@@ -1,7 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://cl5ey4ciasjml"]
+[gd_scene load_steps=24 format=3 uid="uid://cl5ey4ciasjml"]
 
 [ext_resource type="Script" uid="uid://dtjwlvlkue24l" path="res://scripts/slime.gd" id="1_n6pvg"]
 [ext_resource type="Texture2D" uid="uid://crhxsdv1hdwh7" path="res://assets/sprites/slime_green.png" id="1_p2gj0"]
+[ext_resource type="Shader" uid="uid://bq1nxv64tx073" path="res://shaders/slime_blue.gdshader" id="3_pjw23"]
+[ext_resource type="Shader" uid="uid://cmc1amj6dudj1" path="res://shaders/slime_yellow.gdshader" id="4_2npkn"]
+[ext_resource type="AudioStream" uid="uid://bcxafrniwdr5n" path="res://assets/sounds/tap.wav" id="5_2npkn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pjw23"]
 size = Vector2(8, 10)
@@ -108,6 +111,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fd6lc"]
+shader = ExtResource("3_pjw23")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gstla"]
+shader = ExtResource("4_2npkn")
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p2gj0"]
 size = Vector2(12, 12)
 
@@ -124,11 +133,33 @@ position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_pjw23")
 debug_color = Color(3.1285e-06, 0.646274, 0.240983, 0.42)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -12)
+[node name="AnimatedSpriteGreen" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -11)
 sprite_frames = SubResource("SpriteFrames_g40cl")
 animation = &"damage"
 autoplay = "walk"
+frame = 3
+frame_progress = 0.769978
+
+[node name="AnimatedSpriteBlue" type="AnimatedSprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_fd6lc")
+position = Vector2(0, -11)
+sprite_frames = SubResource("SpriteFrames_g40cl")
+animation = &"damage"
+autoplay = "walk"
+frame = 3
+frame_progress = 0.769978
+
+[node name="AnimatedSpriteYellow" type="AnimatedSprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_gstla")
+position = Vector2(0, -11)
+sprite_frames = SubResource("SpriteFrames_g40cl")
+animation = &"damage"
+autoplay = "walk"
+frame = 3
+frame_progress = 0.769978
 
 [node name="RayCastLeft" type="RayCast2D" parent="."]
 position = Vector2(0, -6)
@@ -166,6 +197,9 @@ target_position = Vector2(0, 17)
 [node name="RayCastFloorLeft" type="RayCast2D" parent="."]
 position = Vector2(-10, -12)
 target_position = Vector2(0, 16)
+
+[node name="Tap" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_2npkn")
 
 [connection signal="timeout" from="TimerDamage" to="." method="_on_timer_damage_timeout"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
