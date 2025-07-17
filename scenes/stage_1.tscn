@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://cbw4rojtghdhd"]
+[gd_scene load_steps=25 format=4 uid="uid://b2dmamekuhibf"]
 
 [ext_resource type="Script" uid="uid://dgiffha3bsfrx" path="res://scripts/fase_1.gd" id="1_pipme"]
 [ext_resource type="PackedScene" uid="uid://cl5ey4ciasjml" path="res://scenes/slime.tscn" id="1_u47qm"]
@@ -13,7 +13,6 @@
 [ext_resource type="Script" uid="uid://cs1qf04cuq5my" path="res://scripts/textos.gd" id="8_pu7io"]
 [ext_resource type="PackedScene" uid="uid://cbqi00kn2ct36" path="res://scenes/block.tscn" id="9_ilkkl"]
 [ext_resource type="AudioStream" uid="uid://cxcqduq8g1yap" path="res://assets/music/time_for_adventure.mp3" id="12_k3p0l"]
-[ext_resource type="PackedScene" uid="uid://b0k1vfubmy5a8" path="res://scenes/player.tscn" id="13_ilkkl"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ilkkl"]
 
@@ -617,11 +616,8 @@ position = Vector2(1120, -56)
 stream = ExtResource("12_k3p0l")
 autoplay = true
 
-[node name="Player" parent="." instance=ExtResource("13_ilkkl")]
-position = Vector2(-1024, -72)
-
 [node name="EndStage" parent="." instance=ExtResource("4_kiwqh")]
-position = Vector2(4016, -120)
+position = Vector2(4016, -168)
 
 [connection signal="slime_dead" from="Enemies/Slime" to="." method="_on_slime_slime_dead"]
 [connection signal="slime_dead" from="Enemies/Slime2" to="." method="_on_slime_2_slime_dead"]
@@ -631,4 +627,4 @@ position = Vector2(4016, -120)
 [connection signal="slime_dead" from="Enemies/Slime6" to="." method="_on_slime_6_slime_dead"]
 [connection signal="slime_dead" from="Enemies/Slime7" to="." method="_on_slime_7_slime_dead"]
 [connection signal="show_message" from="Block" to="Textos" method="_on_block_show_message"]
-[connection signal="body_entered" from="EndStage" to="Player" method="_on_end_stage_body_entered"]
+[connection signal="body_entered" from="EndStage" to="." method="_on_end_stage_body_entered"]

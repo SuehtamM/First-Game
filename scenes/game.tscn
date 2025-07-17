@@ -1,4 +1,27 @@
-[gd_scene format=3 uid="uid://55mx5h8fv4qt"]
+[gd_scene load_steps=5 format=3 uid="uid://55mx5h8fv4qt"]
+
+[ext_resource type="PackedScene" uid="uid://b0k1vfubmy5a8" path="res://scenes/player.tscn" id="1_lbhrr"]
+[ext_resource type="Script" uid="uid://cxw5va6dq23xe" path="res://scripts/game_manager.gd" id="1_p57ef"]
+[ext_resource type="PackedScene" uid="uid://o3w1ufv8iuxs" path="res://scenes/finish_game.tscn" id="3_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://bkujqq2dynj4y" path="res://scenes/snow.tscn" id="4_lbhrr"]
 
 [node name="Game" type="Node2D"]
 scale = Vector2(1.02349, 1)
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("1_p57ef")
+
+[node name="Player" parent="GameManager" instance=ExtResource("1_lbhrr")]
+position = Vector2(-1016, -160)
+scale = Vector2(1.02349, 1)
+health = 5
+can_dash = true
+
+[node name="FinishGame" parent="GameManager/Player" instance=ExtResource("3_u5sy4")]
+visible = false
+
+[node name="Snow" parent="GameManager/Player" instance=ExtResource("4_lbhrr")]
+visible = false
+position = Vector2(297.023, -128)
+
+[node name="Stages" type="Node" parent="GameManager"]
