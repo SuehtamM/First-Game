@@ -7,6 +7,7 @@ var right_camera_limit : int = 7328
 signal end_stage
 signal power_up_picked
 
+
 func _on_action_block_action() -> void:
 	$ActionBlock/AltPathActivated.play()
 	for block in $TempBlocks.get_children():
@@ -19,3 +20,7 @@ func _on_end_stage_body_entered(body: Node2D) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	power_up_picked.emit()
+
+
+func _on_music_finished() -> void:
+	$music.play()

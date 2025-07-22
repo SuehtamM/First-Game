@@ -48,8 +48,8 @@ func change_stage(stage : Stages) -> void:
 		$Stages/Stage3.end_stage.connect(_on_end_stage_3)
 		$Stages/Stage3.disable_camera_player.connect(_on_disable_camera_player)
 		
-		$Player.global_position = Vector2(-512, -1920)
-		$Player/Camera2D.limit_left = -568
+		$Player.global_position = Vector2(-2272, -1992)
+		$Player/Camera2D.limit_left = -2344
 		$Player/Camera2D.limit_bottom = 56
 		$Player/Camera2D.limit_right = 12120
 		
@@ -78,3 +78,4 @@ func _on_pickup_power_up() -> void:
 	
 func _on_disable_camera_player() -> void:
 	$Player/Camera2D.enabled = false
+	$Stages/Stage3/music.playing = true

@@ -40,3 +40,7 @@ func _on_area_change_cameras_body_entered(body: Node2D) -> void:
 func _on_slime_slime_dead() -> void:
 	end = true
 	end_stage.emit()
+
+
+func _on_music_finished() -> void:
+	$music.play()

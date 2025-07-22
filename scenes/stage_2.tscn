@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://vpk2efq04dif"]
+[gd_scene load_steps=18 format=4 uid="uid://vpk2efq04dif"]
 
 [ext_resource type="Texture2D" uid="uid://bqaqrwynfs07q" path="res://assets/sprites/world_tileset.png" id="1_6xfo1"]
 [ext_resource type="Script" uid="uid://3lqp1s1xji3v" path="res://scripts/stage_2.gd" id="1_frapx"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://rmkoe462ql5y" path="res://scenes/coin.tscn" id="10_udm74"]
 [ext_resource type="PackedScene" uid="uid://btjnop6rwexk1" path="res://scenes/double_jump.tscn" id="11_udm74"]
 [ext_resource type="PackedScene" uid="uid://dxlunfu67ag6j" path="res://scenes/end_stage.tscn" id="11_x5gfk"]
+[ext_resource type="AudioStream" uid="uid://c0vlcdnechhin" path="res://assets/music/stage2.wav" id="12_sv3jd"]
 [ext_resource type="PackedScene" uid="uid://cl5ey4ciasjml" path="res://scenes/slime.tscn" id="12_x5gfk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6xfo1"]
@@ -589,6 +590,11 @@ color = 1
 [node name="EndStage" parent="." instance=ExtResource("11_x5gfk")]
 position = Vector2(7360, -1200)
 
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_sv3jd")
+autoplay = true
+
 [connection signal="action" from="ActionBlock" to="." method="_on_action_block_action"]
 [connection signal="body_entered" from="DoubleJumpItem" to="." method="_on_body_entered"]
 [connection signal="body_entered" from="EndStage" to="." method="_on_end_stage_body_entered"]
+[connection signal="finished" from="music" to="." method="_on_music_finished"]

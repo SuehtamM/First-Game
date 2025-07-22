@@ -12,10 +12,9 @@ scale = Vector2(1.02349, 1)
 script = ExtResource("1_p57ef")
 
 [node name="Player" parent="GameManager" instance=ExtResource("1_lbhrr")]
-position = Vector2(-1016, -160)
+position = Vector2(-960, -32)
 scale = Vector2(1.02349, 1)
 health = 5
-can_dash = true
 
 [node name="FinishGame" parent="GameManager/Player" instance=ExtResource("3_u5sy4")]
 visible = false
